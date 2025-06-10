@@ -33,7 +33,7 @@ class EcommerceLevel extends StatelessWidget {
               child: Column(
                 children: [
                   const Text(
-                    'E-COMMERCE : LEVELS',
+                    'E-COMMERCE',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class EcommerceLevel extends StatelessWidget {
                       crossAxisCount: 3,
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 20,
-                      children: List.generate(6, (index) {
+                      children: List.generate(3, (index) {
                         int level = index + 1;
                         int stars = level == 1 ? 3 : (level == 2 ? 0 : 0);
                         bool unlocked = level <= 2;

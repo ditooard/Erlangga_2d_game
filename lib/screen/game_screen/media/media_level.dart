@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:game_internet/screen/game_screen/media/level_1.dart';
 import 'package:game_internet/widget/level_button.dart';
 
 class MediaLevel extends StatelessWidget {
   const MediaLevel({super.key});
 
   final String backgroundAsset =
-      'assets/images/situs_berita_bg.png'; // Ganti sesuai kebutuhan
+      'assets/images/media_bg.png'; // Ganti sesuai kebutuhan
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class MediaLevel extends StatelessWidget {
               child: Column(
                 children: [
                   const Text(
-                    'MEDIA LEVEL : ANTI HOAX',
+                    'SOCIAL MEDIA',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -47,7 +48,7 @@ class MediaLevel extends StatelessWidget {
                       crossAxisCount: 3,
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 20,
-                      children: List.generate(6, (index) {
+                      children: List.generate(3, (index) {
                         int level = index + 1;
                         int stars = level == 1 ? 3 : (level == 2 ? 0 : 0);
                         bool unlocked = level <= 2;
@@ -57,7 +58,19 @@ class MediaLevel extends StatelessWidget {
                           unlocked: unlocked,
                           onTap: () {
                             if (unlocked) {
-                              print("Go to level $level");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MediaSosialPage(), // Ganti dengan level yang sesuai
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Level $level belum dibuka!'),
+                                ),
+                              );
                             }
                           },
                         );

@@ -5,7 +5,7 @@ class SitusBeritaLevel extends StatelessWidget {
   const SitusBeritaLevel({super.key});
 
   final String backgroundAsset =
-      'assets/images/berita_bg.png'; // Ganti sesuai kebutuhan
+      'assets/images/situs_berita_bg.png'; // Ganti sesuai kebutuhan
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class SitusBeritaLevel extends StatelessWidget {
           // Level content
           Center(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 60),
+              margin: const EdgeInsets.symmetric(horizontal: 80, vertical: 60),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
@@ -33,7 +33,7 @@ class SitusBeritaLevel extends StatelessWidget {
               child: Column(
                 children: [
                   const Text(
-                    'SITUS BERITA : ANTI HOAX',
+                    'SITUS BERITA',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class SitusBeritaLevel extends StatelessWidget {
                       crossAxisCount: 3,
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 20,
-                      children: List.generate(6, (index) {
+                      children: List.generate(3, (index) {
                         int level = index + 1;
                         int stars = level == 1 ? 3 : (level == 2 ? 0 : 0);
                         bool unlocked = level <= 2;

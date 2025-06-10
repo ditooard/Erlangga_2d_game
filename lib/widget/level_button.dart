@@ -16,30 +16,61 @@ class LevelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Gunakan gambar bintang dari aset
     final starIcons = List.generate(3, (index) {
-      return Icon(
-        Icons.star,
-        size: 16,
-        color: index < stars ? Colors.yellow : Colors.white,
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 1),
+        child: Image.asset(
+          index < stars
+              ? 'assets/images/star_filled.png'
+              : 'assets/images/star_empty.png',
+          width: 50,
+          height: 50,
+        ),
       );
     });
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: unlocked ? onTap : null,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: starIcons,
           ),
-          const SizedBox(height: 5),
-          CircleAvatar(
-            radius: 25,
-            backgroundColor: unlocked ? Colors.orange : Colors.grey,
-            child: Text(
-              '$level',
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
+          Stack(
+            alignment: Alignment.center,
+            // Tambahan penting
+            children: [
+              Image.asset(
+                unlocked
+                    ? 'assets/images/medal_unlocked.png'
+                    : 'assets/images/medal_locked.png',
+                width: 90,
+                height: 90,
+                fit:
+                    BoxFit.contain, // Agar gambar tidak memengaruhi layout teks
+              ),
+              Center(
+                child: Text(
+                  '$level',
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: unlocked ? Colors.white : Colors.grey[600],
+                    shadows: [
+                      Shadow(
+                        offset: Offset(1, 1),
+                        blurRadius: 2,
+                        color: Colors.black.withOpacity(0.4),
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ],
       ),
